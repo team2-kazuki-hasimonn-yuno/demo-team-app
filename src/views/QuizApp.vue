@@ -1,5 +1,5 @@
 <template>
-  <h1>Vue クイズ</h1>
+  <h1>Vue クイズ-優乃</h1>
   <div class="app">
     <h2>Q. {{ "クイズタイトル" }}</h2>
     <img
