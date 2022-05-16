@@ -1,6 +1,7 @@
 <template>
   <h1>Vue メモ</h1>
   <h2>memo</h2>
+  <h2>memo</h2>
   <div class="memo-list">
     <ul class="memo-list__container">
       <li class="memo">
