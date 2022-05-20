@@ -1,10 +1,19 @@
 <template>
   <h1>Vue メモ</h1>
-  <h2>memo</h2>
-  <h2>memo</h2>
   <div class="memo-list">
     <ul class="memo-list__container">
-      <li class="memo">
+      <div v-for="memo in memos" :key="memo">
+        {{}}
+        <li class="memo">
+          <div class="memo__checkbox">
+            <input type="checkbox" />
+          </div>
+          <div class="memo__text">{{ memo }}</div>
+          <!--メモの内容を入れていきたい-->
+          <button class="memo__delete" v-on:click="kaizyo">削除</button>
+        </li>
+      </div>
+      <!-- <li class="memo">
         <div class="memo__checkbox">
           <input type="checkbox" />
         </div>
@@ -24,17 +33,50 @@
         </div>
         <div class="memo__text">ピーマンを2個買う</div>
         <button class="memo__delete">削除</button>
-      </li>
+      </li> -->
+
+      <!-- <li class="memo"> -->
+      <!-- <div class="memo__checkbox">
+          <input type="checkbox" /> -->
+      <!-- </div> -->
+      <!-- <div class="memo__text">{{ memo }}</div> -->
+      <!-- <button class="memo__delete">削除</button> -->
+      <!-- </li>
+      <li class="memo"> -->
+      <!-- <div class="memo__checkbox">
+          <input type="checkbox" /> -->
+      <!-- </div> -->
+      <!-- <div class="memo__text">{{ memo }}</div> -->
+      <!-- <button class="memo__delete">削除</button> -->
+      <!-- </li> -->
     </ul>
     <div class="add-memo-field">
-      <input class="add-memo-field__input" type="text" />
-      <button class="add-memo-field__button">追加</button>
+      <input class="add-memo-field__input" type="text" v-model="inputtext" />
+      <button class="add-memo-field__button" v-on:click="buttonb">追加</button>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      memos: [],
+      inputtext: "",
+    }
+  },
+  methods: {
+    buttonb: function () {
+      if (this.inputtext === "") return
+      this.memos.push(this.inputtext)
+      this.inputtext = ""
+    },
+    kaizyo: function (memo) {
+      var index = this.memos.indexOf(memo)
+      this.memos.splice(index, 1)
+    },
+  },
+}
 </script>
 
 <style scoped>
