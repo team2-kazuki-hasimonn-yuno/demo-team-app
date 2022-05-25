@@ -9,7 +9,7 @@
             <input type="checkbox" />
           </div>
           <div class="memo__text">{{ memo }}</div>
-          <button class="memo__delete" v-on:click="kaizyo">削除</button>
+          <button class="memo__delete" v-on:click="kaizyo(index)">削除</button>
         </li>
       </div>
     </ul>
@@ -34,9 +34,9 @@ export default {
       this.memos.push(this.inputtext)
       this.inputtext = ""
     },
-    kaizyo: function (memo) {
-      var index = this.memos.indexOf(memo)
+    kaizyo: function (index) {
       this.memos.splice(index, 1)
+      console.log(index)
     },
   },
 }
